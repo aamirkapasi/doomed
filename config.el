@@ -120,3 +120,9 @@
 
 ;; kill buffer without confirmation
 (map! "C-x k" 'kill-this-buffer)
+
+;; configure ido mode
+(setq! ido-enable-flex-matching t
+       ido-create-new-buffer 'always
+       ido-use-filename-at-point 'guess
+       ido-max-prospects 5)
