@@ -109,3 +109,6 @@
 ;; No title bar + round corners
 (add-to-list 'default-frame-alist '(undecorated-round . t))
 
+;; bind cmd to meta
+(setq mac-command-modifier 'meta)
+
