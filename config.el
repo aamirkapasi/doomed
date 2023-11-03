@@ -115,3 +115,8 @@
 ;; bind cmd r to rgrep
 (map! "M-r" #'rgrep)
 
+;; switch to the most recently selected buffer
+(map! "M-`" #'mode-line-other-buffer)
+
+;; kill buffer without confirmation
+(map! "C-x k" 'kill-this-buffer)
