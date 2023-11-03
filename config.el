@@ -112,3 +112,6 @@
 ;; bind cmd to meta
 (setq mac-command-modifier 'meta)
 
+;; bind cmd r to rgrep
+(map! "M-r" #'rgrep)
+
