@@ -118,6 +118,12 @@
   (smooth-scrolling-mode 1)
   (setq! smooth-scroll-margin 7))
 
+
+;;
+;; font
+(setq! doom-font-increment 1)
+(map! "M-=" 'doom/increase-font-size)
+(map! "M--" 'doom/decrease-font-size)
 ;; bind cmd r to rgrep
 (map! "M-r" #'rgrep)
 
