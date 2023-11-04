@@ -126,3 +126,8 @@
        ido-create-new-buffer 'always
        ido-use-filename-at-point 'guess
        ido-max-prospects 5)
+
+;; Select windows using M- and a number
+;; TODO
+(require 'window-number)
+(window-number-meta-mode 1)

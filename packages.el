@@ -51,3 +51,6 @@
 
 ;; prettier-js-mode
 (package! prettier-js)
+
+;; select window using meta-number
+(package! window-number)
