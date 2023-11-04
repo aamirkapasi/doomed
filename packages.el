@@ -54,3 +54,6 @@
 
 ;; select window using meta-number
 (package! window-number)
+
+;; smooth scrolling
+(package! smooth-scrolling)

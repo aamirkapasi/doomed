@@ -112,6 +112,12 @@
 ;; bind cmd to meta
 (setq mac-command-modifier 'meta)
 
+;; smooth-scrolling
+(use-package! smooth-scrolling
+  :config
+  (smooth-scrolling-mode 1)
+  (setq! smooth-scroll-margin 7))
+
 ;; bind cmd r to rgrep
 (map! "M-r" #'rgrep)
 
