@@ -75,42 +75,56 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
+;;
 ;; tide-mode
 (defun setup-tide-mode ()
-  (interactive)
   (tide-setup)
   (flycheck-mode +1)
   (setq flycheck-check-syntax-automatically '(save mode-enabled))
   (eldoc-mode +1)
   (tide-hl-identifier-mode +1)
-  ;; company is an optional dependency. You have to
-  ;; install it separately via package-install
-  ;; `M-x package-install [ret] company`
   (company-mode +1))
 
 ;; aligns annotation to the right hand side
 (setq-hook! 'typescript-mode-hook company-tooltip-align-annotations t)
 
-;; formats the buffer before saving
-;; (add-hook! 'before-save-hook 'tide-format-before-save)
-
 ;; if you use treesitter based typescript-ts-mode (emacs 29+)
 (add-hook! 'typescript-ts-mode-hook #'setup-tide-mode)
 
-;; ;; tide mode in .tsx files
+;; tide mode in .tsx files
 (add-hook! 'tsx-ts-mode-hook #'setup-tide-mode)
 
+;;
+;; prettier
 ;; set prettier error level
 (setq! prettier-js-show-errors nil)
-
 ;; prettier in tide mode
 (add-hook! 'tide-mode-hook 'prettier-js-mode)
+
+;;
+;; ido
+(setq! ido-enable-flex-matching t
+       ido-create-new-buffer 'always
+       ido-use-filename-at-point 'guess
+       ido-max-prospects 7)
+
+;;
+;; window-number
+;; select windows using M- and a number
+(use-package! window-number
+  :config
+  (window-number-meta-mode 1))
+
+;;
+;; os
+;; maximise frame on startup
+(toggle-frame-maximized)
 
 ;; No title bar + round corners
 (add-to-list 'default-frame-alist '(undecorated-round . t))
 
 ;; bind cmd to meta
-(setq mac-command-modifier 'meta)
+(setq! mac-command-modifier 'meta)
 
 ;; smooth-scrolling
 (use-package! smooth-scrolling
@@ -118,12 +132,15 @@
   (smooth-scrolling-mode 1)
   (setq! smooth-scroll-margin 7))
 
-
 ;;
 ;; font
 (setq! doom-font-increment 1)
 (map! "M-=" 'doom/increase-font-size)
 (map! "M--" 'doom/decrease-font-size)
+
+;;
+;; misc
+
 ;; bind cmd r to rgrep
 (map! "M-r" #'rgrep)
 
@@ -133,13 +150,4 @@
 ;; kill buffer without confirmation
 (map! "C-x k" 'kill-this-buffer)
 
-;; configure ido mode
-(setq! ido-enable-flex-matching t
-       ido-create-new-buffer 'always
-       ido-use-filename-at-point 'guess
-       ido-max-prospects 5)
 
-;; Select windows using M- and a number
-;; TODO
-(require 'window-number)
-(window-number-meta-mode 1)
