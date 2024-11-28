@@ -116,6 +116,12 @@
   (window-number-meta-mode 1))
 
 ;;
+;; idle highlight mode
+(use-package! idle-highlight-mode
+  :config (setq idle-highlight-idle-time 0.2)
+  :hook ((prog-mode text-mode) . idle-highlight-mode))
+
+;;
 ;; os
 ;; maximise frame on startup
 (toggle-frame-maximized)

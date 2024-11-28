@@ -57,3 +57,6 @@
 
 ;; smooth scrolling
 (package! smooth-scrolling)
+
+;; idle highlight
+(package! idle-highlight-mode)
